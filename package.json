@@ -23,9 +23,11 @@
   },
   "dependencies": {
     "@dracula/dracula-ui": "^0.7.6",
+    "@now/node": "^1.8.5",
     "@prefresh/next": "^1.3.0",
     "next": "^10.0.0",
     "next-plugin-preact": "^3.0.3",
+    "node-fetch": "^2.6.1",
     "preact": "^10.5.5",
     "preact-render-to-string": "^5.1.11",
     "react": "npm:@preact/compat@^0.0.3",
