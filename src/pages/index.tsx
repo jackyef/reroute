@@ -34,9 +34,13 @@ export default function Home() {
         const isRedirectApplied = async () => {
           const redirectResponse = await fetch(
             isDev ? `https://reroute.vercel.app/${rerouteId}` : `/${rerouteId}`,
+            { redirect: 'manual' },
           )
 
-          return redirectResponse.status === 308
+          return (
+            redirectResponse.status === 308 ||
+            redirectResponse.type === 'opaqueredirect'
+          )
         }
 
         const checkRedirectStatus = async () => {
