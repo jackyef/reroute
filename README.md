@@ -1,17 +1,13 @@
-# next-preact-typescript template
+# reroute
 
-A very simple template for starting a project with Next.js + Preact + TypeScript
-Based on [using-preact example](https://github.com/vercel/next.js/tree/canary/examples/using-preact)
+A service to shorten URLs. Only meant for personal use!
 
-Includes:
+## How it works
 
-- TypeScript
-- Prettier
-- Eslint
-
-Bring whatever else you want on your own.
-
-Meant personal usage, but you can use it too, I guess.
+- Client sends request to `/api/add-redirect?url={url}`
+- Server responds with `{ rerouteId: 'someId' }`
+- Server updates the `vercel.json` content in this repository
+- Client tries sending requests to `/{rerouteId}` until it gets a `308` response
 
 ## Installing `dracula-ui`
 
