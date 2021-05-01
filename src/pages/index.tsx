@@ -1,7 +1,9 @@
 import { FormEventHandler, useRef, useState } from 'react'
 import {
+  Badge,
   Box,
   Button,
+  Divider,
   Heading,
   Input,
   Paragraph,
@@ -12,9 +14,11 @@ const isDev = process.env.NODE_ENV === 'development'
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false)
+  const [showTooltip, setShowTooltip] = useState(false)
   const [error, setError] = useState('')
   const [result, setResult] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
+  const resultRef = useRef<HTMLInputElement>(null)
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault()
@@ -67,49 +71,115 @@ export default function Home() {
     }
   }
 
+  const handleCopyUrl = () => {
+    /* Get the text field */
+    const tempInput = resultRef.current
+
+    if (!tempInput) return
+
+    // Set the value
+    tempInput.value = result
+
+    /* Select the text field */
+    tempInput.select()
+    tempInput.setSelectionRange(0, 99999) /* For mobile devices */
+
+    /* Copy the text inside the text field */
+    document.execCommand('copy')
+
+    setShowTooltip(true)
+
+    setTimeout(() => {
+      setShowTooltip(false)
+    }, 3000)
+  }
+
   return (
-    <Box>
-      <Heading as="h1" size="2xl">
-        reroute
-      </Heading>
+    <>
+      <Box>
+        <Heading as="h1" size="2xl">
+          reroute
+        </Heading>
 
-      <Paragraph>
-        Type in an URL to get a <Text color="purpleCyan">rerouted URL</Text> ✨
-      </Paragraph>
+        <Paragraph>
+          Type in an URL to get a <Text color="purpleCyan">rerouted URL</Text>{' '}
+          ✨
+        </Paragraph>
 
-      <form onSubmit={handleSubmit}>
-        <Input
-          ref={inputRef}
-          type="url"
-          placeholder="Type in an URL..."
-          color="purple"
-          size="large"
-          mb="md"
-        />
+        <form onSubmit={handleSubmit}>
+          <Input
+            ref={inputRef}
+            type="url"
+            placeholder="Type in an URL..."
+            color="purple"
+            size="large"
+            variant="outline"
+            mb="md"
+          />
 
-        <Button
-          type="submit"
-          color={!isLoading ? 'yellowPink' : 'animated'}
-          disabled={isLoading}
-          // variant={isLoading ? 'normal' : 'outline'}
-        >
-          reroute!
-        </Button>
+          <Button
+            type="submit"
+            color={!isLoading ? 'yellowPink' : 'animated'}
+            disabled={isLoading}
+            // variant={isLoading ? 'normal' : 'outline'}
+          >
+            reroute!
+          </Button>
 
-        {isLoading && (
-          <Paragraph color="purpleCyan">
-            Writing redirect config, this may take a while...
-          </Paragraph>
-        )}
+          {isLoading && (
+            <Paragraph color="purpleCyan">
+              Writing redirect config, this may take a while...
+            </Paragraph>
+          )}
 
-        {error && <Paragraph color="red">{error}</Paragraph>}
+          {error && <Paragraph color="red">{error}</Paragraph>}
 
-        {result && (
-          <Paragraph color="cyanGreen">
-            All done! Your rerouted URL is: {result}
-          </Paragraph>
-        )}
-      </form>
-    </Box>
+          {result && (
+            <>
+              <Divider my="md" color="purple" />
+              <Paragraph color="white">
+                All done! Here is your{' '}
+                <Text color="purpleCyan">rerouted URL</Text> ✨
+              </Paragraph>
+
+              <div className="resultContainer">
+                <Input
+                  ref={resultRef}
+                  type="text"
+                  readOnly
+                  value={result}
+                  color="green"
+                  variant="outline"
+                  onClick={handleCopyUrl}
+                />
+                <span className={`tooltip ${showTooltip ? 'shown' : ''}`}>
+                  {' '}
+                  <Badge mt="lg" color="cyan" variant="subtle">
+                    Copied!
+                  </Badge>
+                </span>
+              </div>
+            </>
+          )}
+        </form>
+      </Box>
+      <style jsx>{`
+        .resultContainer {
+          position: relative;
+        }
+
+        .tooltip {
+          position: absolute;
+          right: 0;
+          top: 200%;
+          opacity: 0;
+          transition: all 400ms cubic-bezier(0.47, 1.64, 0.41, 0.8);
+        }
+
+        .tooltip.shown {
+          opacity: 1;
+        }
+      `}</style>
+    </>
   )
 }
