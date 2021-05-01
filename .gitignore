@@ -32,3 +32,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# .npmrc, because it contains token used for DraculaUI package
+.npmrc

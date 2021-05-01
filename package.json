@@ -22,6 +22,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
+    "@dracula/dracula-ui": "^0.7.6",
     "@prefresh/next": "^1.3.0",
     "next": "^10.0.0",
     "next-plugin-preact": "^3.0.3",
