@@ -1,5 +1,12 @@
 {
   "redirects": [
-    { "source": "/reroute/test", "destination": "https://jackyef.com" }
+    {
+      "source": "/reroute/test",
+      "destination": "https://jackyef.com"
+    },
+    {
+      "source": "/AUm-e4YM8Q",
+      "destination": "https://github.com/jackyef"
+    }
   ]
 }
