@@ -55,6 +55,10 @@
     {
       "source": "/fMudwBnjf7",
       "destination": "https://stripe.com"
+    },
+    {
+      "source": "/cz37H3n1Bs",
+      "destination": "https://reroute.vercel.app/"
     }
   ]
 }
