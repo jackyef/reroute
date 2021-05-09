@@ -59,6 +59,10 @@
     {
       "source": "/cz37H3n1Bs",
       "destination": "https://reroute.vercel.app/"
+    },
+    {
+      "source": "/wkQEO8_vNL",
+      "destination": "http://www.google.com"
     }
   ]
 }
