@@ -71,6 +71,10 @@
     {
       "source": "/16e0hy712T",
       "destination": "http://backup.stmik-time.ac.id/"
+    },
+    {
+      "source": "/8Uy1oFXtpe",
+      "destination": "https://reroute.vercel.app/"
     }
   ]
 }
