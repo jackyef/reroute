@@ -75,6 +75,10 @@
     {
       "source": "/8Uy1oFXtpe",
       "destination": "https://reroute.vercel.app/"
+    },
+    {
+      "source": "/IVjLnIoP5p",
+      "destination": "https://github.com/willshen8/url-shortener"
     }
   ]
 }
