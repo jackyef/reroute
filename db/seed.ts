@@ -81,6 +81,42 @@ const routes = [
     {
       "source": "/IVjLnIoP5p",
       "destination": "https://github.com/willshen8/url-shortener"
+    },
+        {
+      "source": "/G9w1EpQqsh",
+      "destination": "https://youtube.com"
+    },
+    {
+      "source": "/vYbq_ZyGR9",
+      "destination": "https://google.com"
+    },
+    {
+      "source": "/QsFg_oBCq-",
+      "destination": "https://google.com"
+    },
+    {
+      "source": "/Ggd487_KYP",
+      "destination": "https://satyawikananda.vercel.app"
+    },
+    {
+      "source": "/skBgzL6lpp",
+      "destination": "https://reroute.vercel.app/"
+    },
+    {
+      "source": "/wVMU2PUUVH",
+      "destination": "https://kalwabed.xyz"
+    },
+    {
+      "source": "/49xDXQtzCD",
+      "destination": "https://reroute.vercel.app/"
+    },
+    {
+      "source": "/r0T4Oon46j",
+      "destination": "https://twitter.com"
+    },
+    {
+      "source": "/vxMXkigcV9",
+      "destination": "https://zicklepop.com"
     }
 ]
 
