@@ -37,11 +37,9 @@ follow the installation steps for `dracula-ui` which involves creating a custom
 - `yarn add prisma @prisma/client`
 - `npx prisma init`
 - `yarn dev`
-- Update `.env` with the following value:
+- Update `.env` with the value logged in console after running `yarn dev`:
   ```
   DATABASE_URL="mysql://root@127.0.0.1:3306/reroute"
-  # The port number might change if you have other services running on that port.
-  # Adjust the port number according to the log you see after running `yarn dev`
   ```
 - `npx prisma db pull`, allow prisma update the schema file according to the DB server)
 - `npx prisma generate`, allow prisma to generate the `prisma-client` inside `node_modules`

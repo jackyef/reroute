@@ -1,11 +1,11 @@
 {
-  "name": "using-preact",
+  "name": "reroute",
   "version": "1.0.0",
   "scripts": {
     "db:seed": "ts-node --skip-project ./db/seed.ts",
-    "dev": "pscale connect reroute dev --execute \"next\"",
+    "dev": "pscale connect reroute dev --execute-protocol \"mysql\" --execute \"next\"",
     "build": "next build",
-    "start": "pscale connect reroute main --execute \"next start\""
+    "start": "pscale connect reroute main --execute-protocol \"mysql\" --execute \"next start\""
   },
   "devDependencies": {
     "@types/next": "^9.0.0",
