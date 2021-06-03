@@ -149,6 +149,7 @@ export default function Home() {
                   readOnly
                   value={result}
                   color="green"
+                  size="large"
                   variant="outline"
                   onClick={handleCopyUrl}
                 />
