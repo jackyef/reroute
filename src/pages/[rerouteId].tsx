@@ -25,17 +25,21 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   if (rerouteId) {
     try {
-      const { destination } = await prisma.routes.findFirst({
-        where: { id: rerouteId },
+      const route = await prisma.routes.findFirst({
+        where: { id: String(rerouteId) },
       })
 
-      return {
-        redirect: {
-          statusCode: 301,
-          destination,
-          basePath: false,
-        },
-        props: {},
+      if (route) {
+        const { destination } = route
+
+        return {
+          redirect: {
+            statusCode: 301,
+            destination,
+            basePath: false,
+          },
+          props: {},
+        }
       }
     } catch {}
   }

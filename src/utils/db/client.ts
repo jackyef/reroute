@@ -3,8 +3,9 @@
 // initializing the PrismaClient
 process.env.DATABASE_URL = process.env.DATABASE_URL?.replace('mysql2', 'mysql')
 
+import type { PrismaClient as PrismaClientType } from '@prisma/client'
 // eslint-disable-next-line
 const { PrismaClient } = require('@prisma/client')
-const prisma = new PrismaClient()
+const prisma = new PrismaClient() as PrismaClientType
 
 export { prisma }
