@@ -1,10 +1,12 @@
-import { updateRedirect } from '@/utils/github/updateRedirect'
+import { prisma } from '@/utils/db/client'
 import { NowRequest, NowResponse } from '@now/node'
+import { nanoid } from 'nanoid'
 
 const isDev = process.env.NODE_ENV === 'development'
 
 export default async (req: NowRequest, res: NowResponse) => {
-  const url = String(req.query.url || '')
+  const { query } = req
+  const url = String(query.url || '')
 
   if (url) {
     try {
@@ -12,7 +14,14 @@ export default async (req: NowRequest, res: NowResponse) => {
       // will throw an error if it's not
       new URL(url)
 
-      const rerouteId = isDev ? 'reroute/test' : await updateRedirect(url)
+      const rerouteId = nanoid(10)
+
+      await prisma.routes.create({
+        data: {
+          id: rerouteId,
+          destination: url,
+        },
+      })
 
       res.status(200)
       res.setHeader('Access-Control-Allow-Origin', '*')
