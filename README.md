@@ -45,6 +45,22 @@ follow the installation steps for `dracula-ui` which involves creating a custom
 - `npx prisma generate`, allow prisma to generate the `prisma-client` inside `node_modules`
 - `yarn db:seed`, seed the DB with some records
 
+## Deploying on Vercel
+We'll need to generate a token to use on production.
+```
+pscale service-token create
+pscale service-token add-access <your-token-name> connect_production_branch --database <your-db-name>
+
+# In my case, the command would be
+pscale service-token add-access <your-token-name> connect_production_branch --database reroute
+```
+
+```
+PLANETSCALE_ORG=your-org-name # Our org name on PlanetScale
+PLANETSCALE_SERVICE_TOKEN_NAME=your-token-name # The token name we just created
+PLANETSCALE_SERVICE_TOKEN=your-token-value # The token value we just created
+```
+
 ## Updating DB schema
 - If there are any changes to the DB schema, we should create a new deploy request
   ```
