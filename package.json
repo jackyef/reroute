@@ -4,8 +4,8 @@
   "scripts": {
     "db:seed": "ts-node --skip-project ./db/seed.ts",
     "dev": "pscale connect reroute dev --execute-protocol \"mysql\" --execute \"next\"",
-    "build": "next build",
-    "start": "npx prisma generate && pscale connect reroute main --execute-protocol \"mysql\" --execute \"next start\""
+    "build": "npx prisma generate && next build",
+    "start": "pscale connect reroute main --execute-protocol \"mysql\" --execute \"next start\""
   },
   "devDependencies": {
     "@types/next": "^9.0.0",
