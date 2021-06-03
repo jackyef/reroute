@@ -34,6 +34,8 @@ export default async (req: NowRequest, res: NowResponse) => {
           }
         : {}
       res.status(500).json({ message: '😱', ...debugInfo })
+    } finally {
+      await prisma.$disconnect()
     }
   } else {
     res.status(403).json({ message: '😠' })

@@ -41,7 +41,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
           props: {},
         }
       }
-    } catch {}
+    } finally {
+      await prisma.$disconnect()
+    }
   }
 
   // Pass data to the page via props
