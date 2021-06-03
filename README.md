@@ -44,3 +44,17 @@ follow the installation steps for `dracula-ui` which involves creating a custom
 - `npx prisma db pull`, allow prisma update the schema file according to the DB server)
 - `npx prisma generate`, allow prisma to generate the `prisma-client` inside `node_modules`
 - `yarn db:seed`, seed the DB with some records
+
+## Updating DB schema
+- If there are any changes to the DB schema, we should create a new deploy request
+  ```
+  pscale deploy-request create reroute dev
+  ```
+  Think of it like creating a PR to merge the `dev` branch to the `main` branch, except
+  it is `deploy-request` in PlanetScale's term.
+
+- If there are conflicts, it should be resolved.
+- Once everything is fine, deploy the deploy-request by running
+  ```
+  pscale deploy-request deploy reroute <deploy-request-number>
+  ```
