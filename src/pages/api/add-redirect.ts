@@ -27,6 +27,7 @@ export default async (req: NowRequest, res: NowResponse) => {
       res.setHeader('Access-Control-Allow-Origin', '*')
       res.json({ rerouteId })
     } catch (err) {
+      console.error('DB_URL', process.env.DATABASE_URL)
       const debugInfo = isDev
         ? {
             error: err.message,
