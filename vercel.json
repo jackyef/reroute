@@ -95,6 +95,10 @@
     {
       "source": "/Ggd487_KYP",
       "destination": "https://satyawikananda.vercel.app"
+    },
+    {
+      "source": "/skBgzL6lpp",
+      "destination": "https://reroute.vercel.app/"
     }
   ]
 }
