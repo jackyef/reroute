@@ -103,6 +103,10 @@
     {
       "source": "/wVMU2PUUVH",
       "destination": "https://kalwabed.xyz"
+    },
+    {
+      "source": "/49xDXQtzCD",
+      "destination": "https://reroute.vercel.app/"
     }
   ]
 }
