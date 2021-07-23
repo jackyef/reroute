@@ -107,6 +107,10 @@
     {
       "source": "/49xDXQtzCD",
       "destination": "https://reroute.vercel.app/"
+    },
+    {
+      "source": "/r0T4Oon46j",
+      "destination": "https://twitter.com"
     }
   ]
 }
