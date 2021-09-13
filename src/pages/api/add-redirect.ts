@@ -27,7 +27,18 @@ export default async (req: NowRequest, res: NowResponse) => {
       res.setHeader('Access-Control-Allow-Origin', '*')
       res.json({ rerouteId })
     } catch (err) {
-      console.error('DB_URL', process.env.DATABASE_URL)
+      
+      const {
+        PLANETSCALE_DB_USERNAME,
+        PLANETSCALE_DB_HOST,
+        PLANETSCALE_SSL_CERT_PATH,
+        DATABASE_URL
+      } = process.env
+      
+      const DB_URL = `mysql://${PLANETSCALE_DB_USERNAME}:************@${PLANETSCALE_DB_HOST}/reroute?sslmode=require&sslaccept=strict&sslcert=${PLANETSCALE_SSL_CERT_PATH}`
+      console.error('DATABASE_URL', DATABASE_URL)
+      console.error('DB_URL', DB_URL)
+
       const debugInfo = isDev
         ? {
             error: err.message,
