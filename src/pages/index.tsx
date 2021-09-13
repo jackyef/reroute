@@ -10,8 +10,6 @@ import {
   Text,
 } from '@dracula/dracula-ui'
 
-const isDev = process.env.NODE_ENV === 'development'
-
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false)
   const [showTooltip, setShowTooltip] = useState(false)
@@ -36,10 +34,9 @@ export default function Home() {
         const { rerouteId }: { rerouteId: string } = await response.json()
 
         const isRedirectApplied = async () => {
-          const redirectResponse = await fetch(
-            isDev ? `https://reroute.vercel.app/${rerouteId}` : `/${rerouteId}`,
-            { redirect: 'manual' },
-          )
+          const redirectResponse = await fetch(`/${rerouteId}`, {
+            redirect: 'manual',
+          })
 
           return (
             redirectResponse.status === 308 ||

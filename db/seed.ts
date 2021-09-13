@@ -1,5 +1,7 @@
-{
-  "redirects": [
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
+const routes = [
     {
       "source": "/reroute/test",
       "destination": "https://jackyef.com"
@@ -80,7 +82,7 @@
       "source": "/IVjLnIoP5p",
       "destination": "https://github.com/willshen8/url-shortener"
     },
-    {
+        {
       "source": "/G9w1EpQqsh",
       "destination": "https://youtube.com"
     },
@@ -116,5 +118,26 @@
       "source": "/vxMXkigcV9",
       "destination": "https://zicklepop.com"
     }
-  ]
+]
+
+async function main() {
+  const dbRouteItems = routes.map(r => ({
+    id: r.source.replace('\/', ''),
+    destination: r.destination,
+  }))
+
+  console.log('records count:', await prisma.routes.count())
+
+  await prisma.routes.createMany({ data: dbRouteItems, skipDuplicates: true })
+
+  console.log('inserted routes!')
+  console.log('records count:', await prisma.routes.count())
 }
+
+main()
+  .catch((e) => {
+    throw e
+  })
+  .finally(async () => {
+    await prisma.$disconnect()
+  })
