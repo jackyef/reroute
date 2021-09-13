@@ -8,8 +8,8 @@ Code is open-sourced so it can serve as a reference.
 
 - Client sends request to `/api/add-redirect?url={url}`
 - Server responds with `{ rerouteId: 'someId' }`
-- Server updates the `vercel.json` content in this repository
-- Client tries sending requests to `/{rerouteId}` until it gets a `308` response
+- Server adds a new entry to the DB hosted on [PlanetScale](https://planetscale.com/)
+- Client tries sending requests to `/{rerouteId}` until it gets a `308` response, making sure that the redirect is now in place.
 
 ## Installing `dracula-ui`
 
